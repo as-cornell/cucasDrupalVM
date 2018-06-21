@@ -7,4 +7,7 @@
 
 
 Drupal VM Quick start guide<br />
-https://github.com/geerlingguy/drupal-vm#quick-start-guide<br />
+https://github.com/geerlingguy/drupal-vm#quick-start-guide
+
+Drupal VM as a Composer Dependency<br />
+http://docs.drupalvm.com/en/latest/deployment/composer-dependency/
