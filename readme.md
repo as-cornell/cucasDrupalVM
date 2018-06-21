@@ -3,7 +3,8 @@
 2) Clone this repo into ~sites/drupal-vm-cd<br />
 3) Run 'composer install' from ~sites/drupal-vm-cd<br />
 4) Clone https://github.com/as-cornell/cucas8zlatan into ~sites/drupal-vm-cd/docroot<br />
-5) Run 'composer install' from ~sites/drupal-vm-cd/docroot
+5) Run 'composer install' from ~sites/drupal-vm-cd/docroot<br />
+6) Run vagrant up --provision from ~sites/drupal-vm-cd<br />
 
 
 Drupal VM Quick start guide<br />
