@@ -3,3 +3,4 @@
 vendor
 # Ignore drupal files.managed under another repo.
 docroot
+.vagrant
