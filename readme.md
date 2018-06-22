@@ -9,9 +9,9 @@
 6) Run `vagrant up --provision` from ~sites/drupal-vm-cd<br />
 
 
-**Drupal VM Quick start guide**
+**Drupal VM Quick start guide**<br />
 https://github.com/geerlingguy/drupal-vm#quick-start-guide
 
 
-**Drupal VM as a Composer Dependency**
+**Drupal VM as a Composer Dependency**<br />
 http://docs.drupalvm.com/en/latest/deployment/composer-dependency/
