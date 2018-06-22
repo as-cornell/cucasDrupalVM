@@ -15,3 +15,5 @@ https://github.com/geerlingguy/drupal-vm#quick-start-guide
 
 ## Drupal VM as a Composer Dependency
 http://docs.drupalvm.com/en/latest/deployment/composer-dependency/
+
+:hankey::hankey:
