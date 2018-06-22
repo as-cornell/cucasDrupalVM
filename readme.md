@@ -7,7 +7,6 @@
 5) Run 'composer install' from ~sites/drupal-vm-cd/docroot<br />
 6) Run 'vagrant up --provision' from ~sites/drupal-vm-cd<br />
 
-#References
 ##Drupal VM Quick start guide
 https://github.com/geerlingguy/drupal-vm#quick-start-guide
 
