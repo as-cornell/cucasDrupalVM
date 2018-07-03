@@ -1,5 +1,8 @@
 #Installation Instructions
 
+This project template provides a starter kit for managing your site
+dependencies with [Composer](https://getcomposer.org/).
+
 ##Install Virtualbox and Vagrant for MacOSX
 
 1. [Install Virtualbox and Vagrant](https://gist.github.com/tomysmile/0618f1aa16341706940ed36b423b431c)
