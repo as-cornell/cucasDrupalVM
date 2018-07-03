@@ -9,6 +9,7 @@ dependencies with [Composer](https://getcomposer.org/).
 1. Run `vagrant plugin install vagrant-hostsupdater`
 1. Clone this repo into `~sites/drupal-vm-cd`
 1. Run `composer install` from `~sites/drupal-vm-cd`
+1. Update `config.yml` to include a new `vagrant_synced_folders` block for your new directory under `~sites/drupal-vm-cd/sites/`
 1. Clone [cucas8zlatan](https://github.com/as-cornell/cucas8zlatan) into `~sites/drupal-vm-cd/sites/NEWSITENAME`
 1. Run `composer install` from `~sites/drupal-vm-cd/docroot`
 1. Run `vagrant up --provision` from `~sites/drupal-vm-cd`
