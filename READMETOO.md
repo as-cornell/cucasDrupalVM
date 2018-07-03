@@ -1,7 +1,8 @@
 #Installation Instructions
 
 ##Install Virtualbox && Vagrant for MacOSX
-(https://gist.github.com/tomysmile/0618f1aa16341706940ed36b423b431c)
+
+1. https://gist.github.com/tomysmile/0618f1aa16341706940ed36b423b431c
 1. Run `vagrant plugin install vagrant-hostsupdater`
 1. Clone this repo into ~sites/drupal-vm-cd
 1. Run `composer install` from ~sites/drupal-vm-cd
