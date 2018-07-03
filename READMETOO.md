@@ -1,9 +1,9 @@
-#Installation Instructions
+# Installation Instructions
 
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
-##Install Virtualbox and Vagrant for MacOSX
+## Install Virtualbox and Vagrant for MacOSX
 
 1. [Install Virtualbox and Vagrant](https://gist.github.com/tomysmile/0618f1aa16341706940ed36b423b431c)
 1. Run `vagrant plugin install vagrant-hostsupdater`
@@ -14,10 +14,10 @@ dependencies with [Composer](https://getcomposer.org/).
 1. Run `vagrant up --provision` from `~sites/drupal-vm-cd`
 
 
-##Drupal VM Quick start guide
+## Drupal VM Quick start guide
 
 [On github](https://github.com/geerlingguy/drupal-vm#quick-start-guide)
 
-##Drupal VM as a Composer Dependency
+## Drupal VM as a Composer Dependency
 
 [Drupal VM Documentation](http://docs.drupalvm.com/en/latest/deployment/composer-dependency/)
