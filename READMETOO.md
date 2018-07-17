@@ -29,8 +29,8 @@ dependencies with [Composer](https://getcomposer.org/).
 
 ### notes
 
-1. Make sure Node and Ruby are updated via Homebrew [Homebrew help] (https://docs.brew.sh/FAQ)
-1. Make sure Node is running as ~ v 8.0.0 `node -v` [Help] (https://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula)
+1. Make sure Node and Ruby are updated via Homebrew [Homebrew help](https://docs.brew.sh/FAQ)
+1. Make sure Node is running as ~ v 8.0.0 `node -v`  [Help](https://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula)
 1. Run Emulsify script: `vagrant ssh` -> `cd docroot/themes/contrib/emulsify/` -> `php emulsify.php "THEME NAME"`
 1. Outside of vagrant ssh: `cd docroot/themes//custom/THEME_NAME/` -> `yarn install`
 1. Inside Vagrant ssh: `drush sa` to get @ALIAS -> `drush @ALIAS then THEME_NAME -y && drush @ALIAS en components unified_twig_ext -y`
