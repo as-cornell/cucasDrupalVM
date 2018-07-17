@@ -39,4 +39,5 @@ dependencies with [Composer](https://getcomposer.org/).
 1. Theme should now work, and Pattern Lab availible here: `http://localhost:3000/pattern-lab/public/`
 
 :hankey: :fire: :cactus: :mountain_railway:
+
 /play butts
