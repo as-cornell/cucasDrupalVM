@@ -15,13 +15,13 @@ drupal_composer_install_dir: "/var/www/drupal-vm-cd"
 drupal_composer_dependencies: []
 drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
 # Settings for installing a Drupal site if 'drupal_install_site:' is 'true'.
-drupal_major_version: 8
-drupal_domain: "{{ vagrant_hostname }}"
-drupal_site_name: "Drupal"
-drupal_install_profile: standard
-drupal_enable_modules: []
-drupal_account_name: admin
-drupal_account_pass: admin
+#drupal_major_version: 8
+#drupal_domain: "{{ vagrant_hostname }}"
+#drupal_site_name: "Drupal"
+#drupal_install_profile: standard
+#drupal_enable_modules: []
+#drupal_account_name: admin
+#drupal_account_pass: admin
 # Comment out any extra utilities you don't want to install. If you don't want
 # to install *any* extras, set this value to an empty set, e.g. `[]`.
 installed_extras:
