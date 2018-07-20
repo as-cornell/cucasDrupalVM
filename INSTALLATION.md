@@ -11,6 +11,7 @@ dependencies with [Composer](https://getcomposer.org/).
 1. Run `composer install` from `~sites/drupal-vm-cd`
 1. Run `mkdir sites` and `cd sites`
 1. If adding a new site, update `config.yml` to include a new `vagrant_synced_folders` block for your new directory under `~sites/drupal-vm-cd/sites/NEWSITENAME`
+1. Add another vhost block, mySQL database in `config.yml`
 1. Clone [zlatan](https://github.com/as-cornell/cucas8zlatan) into `~sites/drupal-vm-cd/sites/NEWSITENAME`
 1. Run `composer install` from `~sites/drupal-vm-cd/sites/NEWSITENAME`
 1. Run `vagrant up --provision` from `~sites/drupal-vm-cd`
