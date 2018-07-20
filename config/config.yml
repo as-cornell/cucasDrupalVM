@@ -4,9 +4,13 @@ vagrant_synced_folders:
   # any of the build_* settings are 'true'. By default the folder is set to
   # the drupal-vm folder.
   - local_path: ./sites/zlatan
-    destination: /var/www/drupal-vm-cd
+    destination: /var/www/zlatan
     type: nfs
     create: true
+  - local_path: ./sites/rojo
+    destination: /var/www/rojo
+    type: nfs
+    create: false
 drupal_install_site: false
 drupal_build_composer_project: false
 drupal_build_composer: true
@@ -62,7 +66,7 @@ firewall_allowed_tcp_ports:
 # multisite deployments, you can point multiple servernames at one documentroot.
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
-  - servername: "{{ drupal_domain }}"
+  - servername: "{{ vagrant_hostname }}"
     serveralias: "www.{{ drupal_domain }}"
     documentroot: "{{ drupal_core_path }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -83,8 +87,47 @@ apache_vhosts:
     serveralias: "dashboard.{{ vagrant_hostname }}"
     documentroot: "{{ dashboard_install_dir }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+# multisite settings
+  - servername: "local.drupal_two.{{ vagrant_hostname }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "local.drupal_three.{{ vagrant_hostname }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "rojo.{{ vagrant_hostname }}"
+    documentroot: "/var/www/rojo/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
 # MySQL databases
 mysql_databases:
   - name: "{{ drupal_db_name }}"
     encoding: utf8mb4
     collation: utf8mb4_general_ci
+  - name: drupal_two
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: drupal_three
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: rojo
+    encoding: utf8
+    collation: utf8_general_ci
+mysql_users:
+  - name: drupal
+    host: "%"
+    password: drupal
+    priv: "drupal.*:ALL"
+  - name: drupal-two
+    host: "%"
+    password: drupal-two
+    priv: "drupal_two.*:ALL"
+  - name: drupal-three
+    host: "%"
+    password: drupal-three
+    priv: "drupal_three.*:ALL"
+  - name: rojo
+    host: "%"
+    password: rojo
+    priv: "rojo.*:ALL"
