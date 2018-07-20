@@ -14,6 +14,8 @@ dependencies with [Composer](https://getcomposer.org/).
 1. Clone [zlatan](https://github.com/as-cornell/cucas8zlatan) into `~sites/drupal-vm-cd/sites/NEWSITENAME`
 1. Run `composer install` from `~sites/drupal-vm-cd/sites/NEWSITENAME`
 1. Run `vagrant up --provision` from `~sites/drupal-vm-cd`
+1. For multisite, create sites folder under `docroot/sites/SITENAME` and edit `docroot/sites/php`
+1. Add another vhost block, mySQL database and user as described [here](http://docs.drupalvm.com/en/latest/deployment/multisite/)
 
 
 ## Drupal VM Quick start guide
