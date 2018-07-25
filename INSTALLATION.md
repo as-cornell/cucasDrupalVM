@@ -17,6 +17,8 @@ dependencies with [Composer](https://getcomposer.org/).
 1. Run `vagrant up --provision` from `~sites/drupal-vm-cd`
 1. For multisite, create sites folder under `docroot/sites/SITENAME` and edit `docroot/sites/sites.php`
 1. Add another vhost block, mySQL database and user as described [here](http://docs.drupalvm.com/en/latest/deployment/multisite/)
+1. `vagrant box update`
+1. `brew cask reinstall vagrant`
 
 
 ## Drupal VM Quick start guide
