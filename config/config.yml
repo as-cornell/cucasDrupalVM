@@ -96,6 +96,22 @@ apache_vhosts:
     documentroot: "{{ drupal_core_path }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
+  - servername: "local.8a.{{ vagrant_hostname }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "local.8b.{{ vagrant_hostname }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "local.8c.{{ vagrant_hostname }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "local.8d.{{ vagrant_hostname }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
   - servername: "rojo.{{ vagrant_hostname }}"
     documentroot: "/var/www/rojo/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -111,6 +127,18 @@ mysql_databases:
   - name: drupal_three
     encoding: utf8
     collation: utf8_general_ci
+  - name: drupal_a
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: drupal_b
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: drupal_c
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: drupal_d
+    encoding: utf8
+    collation: utf8_general_ci
   - name: rojo
     encoding: utf8
     collation: utf8_general_ci
@@ -118,7 +146,7 @@ mysql_users:
   - name: drupal
     host: "%"
     password: drupal
-    priv: "drupal.*:ALL"
+    priv: "drupal*:ALL"
   - name: drupal-two
     host: "%"
     password: drupal-two
