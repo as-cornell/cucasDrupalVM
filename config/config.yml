@@ -15,6 +15,7 @@ vagrant_synced_folders:
     destination: /var/www/fellaini
     type: nfs
     create: false
+vagrant_memory: 4096
 drupal_install_site: false
 drupal_build_composer_project: false
 drupal_build_composer: false
@@ -22,6 +23,7 @@ drupal_composer_path: false
 drupal_composer_install_dir: "/var/www/zlatan"
 drupal_composer_dependencies: []
 drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
+configure_drush_aliases: true
 # Settings for installing a Drupal site if 'drupal_install_site:' is 'true'.
 #drupal_major_version: 8
 #drupal_domain: "{{ vagrant_hostname }}"
