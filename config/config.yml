@@ -37,7 +37,7 @@ installed_extras:
   - drush
   # - elasticsearch
   # - java
-  - mailhog
+  #- mailhog
   # - memcached
   # - newrelic
   # - nodejs
