@@ -3,10 +3,6 @@ vagrant_synced_folders:
   # The first synced folder will be used for the default Drupal installation, if
   # any of the build_* settings are 'true'. By default the folder is set to
   # the drupal-vm folder.
-  - local_path: ./sites/zlatan
-    destination: /var/www/zlatan
-    type: nfs
-    create: false
   - local_path: ./sites/rojo
     destination: /var/www/rojo
     type: nfs
@@ -20,9 +16,9 @@ drupal_install_site: false
 drupal_build_composer_project: false
 drupal_build_composer: false
 drupal_composer_path: false
-drupal_composer_install_dir: "/var/www/zlatan"
+drupal_composer_install_dir: "/var/www/fellaini"
 drupal_composer_dependencies: []
-drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
+drupal_core_path: "{{ drupal_composer_install_dir }}/web"
 configure_drush_aliases: true
 # Settings for installing a Drupal site if 'drupal_install_site:' is 'true'.
 #drupal_major_version: 8
@@ -53,7 +49,7 @@ installed_extras:
   # - tideways
   # - upload-progress
   - varnish
-  # - xdebug
+  - xdebug
   # - xhprof # use `tideways` if you're installing PHP 7+
 firewall_allowed_tcp_ports:
   - "22"
@@ -72,9 +68,8 @@ firewall_allowed_tcp_ports:
 # multisite deployments, you can point multiple servernames at one documentroot.
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
-  - servername: "{{ vagrant_hostname }}"
-    serveralias: "www.{{ drupal_domain }}"
-    documentroot: "{{ drupal_core_path }}"
+  - servername: "fellaini.{{ vagrant_hostname }}"
+    documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "adminer.{{ vagrant_hostname }}"
@@ -94,19 +89,12 @@ apache_vhosts:
     documentroot: "{{ dashboard_install_dir }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # multisite settings
-  - servername: "local.drupal_two.{{ vagrant_hostname }}"
-    documentroot: "{{ drupal_core_path }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "local.drupal_three.{{ vagrant_hostname }}"
-    documentroot: "{{ drupal_core_path }}"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
-  - servername: "local.8a.{{ vagrant_hostname }}"
+  - servername: "local.second.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "local.8b.{{ vagrant_hostname }}"
+  - servername: "local.people.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -121,25 +109,13 @@ apache_vhosts:
   - servername: "rojo.{{ vagrant_hostname }}"
     documentroot: "/var/www/rojo/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "fellaini.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 # MySQL databases
 mysql_databases:
-  - name: "{{ drupal_db_name }}"
-    encoding: utf8mb4
-    collation: utf8mb4_general_ci
-  - name: drupal_two
+  - name: second
     encoding: utf8
     collation: utf8_general_ci
-  - name: drupal_three
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: drupal_a
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: drupal_b
+  - name: people
     encoding: utf8
     collation: utf8_general_ci
   - name: drupal_c
@@ -167,14 +143,14 @@ mysql_users:
     host: "%"
     password: drupal-three
     priv: "drupal_three.*:ALL"
-  - name: drupal-a
+  - name: second
     host: "%"
     password: drupal
-    priv: "drupal_a.*:ALL"
-  - name: drupal-b
+    priv: "second.*:ALL"
+  - name: people
     host: "%"
     password: drupal
-    priv: "drupal_b.*:ALL"
+    priv: "people.*:ALL"
   - name: drupal-c
     host: "%"
     password: drupal
@@ -191,3 +167,6 @@ mysql_users:
     host: "%"
     password: fellaini
     priv: "fellaini.*:ALL"
+
+# XDebug configuration. XDebug is disabled by default for better performance.
+php_xdebug_default_enable: 1
