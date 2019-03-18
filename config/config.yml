@@ -1,4 +1,4 @@
-vagrant_hostname: cucas8.test
+vagrant_hostname: fellaini.local
 vagrant_synced_folders:
   # The first synced folder will be used for the default Drupal installation, if
   # any of the build_* settings are 'true'. By default the folder is set to
@@ -68,7 +68,7 @@ firewall_allowed_tcp_ports:
 # multisite deployments, you can point multiple servernames at one documentroot.
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
-  - servername: "fellaini.{{ vagrant_hostname }}"
+  - servername: "{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -90,19 +90,19 @@ apache_vhosts:
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # multisite settings
 
-  - servername: "local.second.{{ vagrant_hostname }}"
+  - servername: "second.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "local.people.{{ vagrant_hostname }}"
+  - servername: "people.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "local.8c.{{ vagrant_hostname }}"
+  - servername: "8c.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "local.8d.{{ vagrant_hostname }}"
+  - servername: "8d.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -134,39 +134,7 @@ mysql_users:
   - name: drupal
     host: "%"
     password: drupal
-    priv: "drupal.*:ALL"
-  - name: drupal-two
-    host: "%"
-    password: drupal-two
-    priv: "drupal_two.*:ALL"
-  - name: drupal-three
-    host: "%"
-    password: drupal-three
-    priv: "drupal_three.*:ALL"
-  - name: second
-    host: "%"
-    password: drupal
-    priv: "second.*:ALL"
-  - name: people
-    host: "%"
-    password: drupal
-    priv: "people.*:ALL"
-  - name: drupal-c
-    host: "%"
-    password: drupal
-    priv: "drupal_c.*:ALL"
-  - name: drupal-d
-    host: "%"
-    password: drupal
-    priv: "drupal_d.*:ALL"
-  - name: rojo
-    host: "%"
-    password: rojo
-    priv: "rojo.*:ALL"
-  - name: fellaini
-    host: "%"
-    password: fellaini
-    priv: "fellaini.*:ALL"
+    priv: "*.*:ALL"
 
 # XDebug configuration. XDebug is disabled by default for better performance.
 php_xdebug_default_enable: 1
