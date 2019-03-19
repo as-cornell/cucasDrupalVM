@@ -16,7 +16,7 @@ drupal_install_site: false
 drupal_build_composer_project: false
 drupal_build_composer: false
 drupal_composer_path: false
-drupal_composer_install_dir: "/var/www/fellaini"
+drupal_composer_install_dir: "/var/www/fellaini/"
 drupal_composer_dependencies: []
 drupal_core_path: "{{ drupal_composer_install_dir }}/web"
 configure_drush_aliases: true
@@ -37,7 +37,7 @@ installed_extras:
   - drush
   # - elasticsearch
   # - java
-  #- mailhog
+  # - mailhog
   # - memcached
   # - newrelic
   # - nodejs
@@ -69,7 +69,7 @@ firewall_allowed_tcp_ports:
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
   - servername: "{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
+    documentroot: "/var/www/fellaini/web/"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "adminer.{{ vagrant_hostname }}"
@@ -98,13 +98,14 @@ apache_vhosts:
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "8c.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+# enable below for additional hostnames mapped to sites folders
+#  - servername: "8c.{{ vagrant_hostname }}"
+#    documentroot: "/var/www/fellaini/web"
+#    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "8d.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+#  - servername: "8d.{{ vagrant_hostname }}"
+#    documentroot: "/var/www/fellaini/web"
+#    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "rojo.{{ vagrant_hostname }}"
     documentroot: "/var/www/rojo/web"
@@ -118,12 +119,13 @@ mysql_databases:
   - name: people
     encoding: utf8
     collation: utf8_general_ci
-  - name: drupal_c
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: drupal_d
-    encoding: utf8
-    collation: utf8_general_ci
+# enable below to provision additional databases
+#  - name: drupal_c
+#    encoding: utf8
+#    collation: utf8_general_ci
+#  - name: drupal_d
+#    encoding: utf8
+#    collation: utf8_general_ci
   - name: rojo
     encoding: utf8
     collation: utf8_general_ci
