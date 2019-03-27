@@ -155,3 +155,10 @@ mysql_users:
 
 # XDebug configuration. XDebug is disabled by default for better performance.
 php_xdebug_default_enable: 1
+php_xdebug_coverage_enable: 0
+php_xdebug_cli_disable: yes
+php_xdebug_remote_enable: 1
+php_xdebug_remote_connect_back: 1
+php_xdebug_idekey: sublime.xdebug
+php_xdebug_max_nesting_level: 256
+php_xdebug_remote_host: "{{ ansible_default_ipv4.gateway }}"

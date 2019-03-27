@@ -1,0 +1,3 @@
+if Vagrant.has_plugin?('vagrant-exec')
+  config.exec.commands '*', directory: '/var/www/fellaini/web'
+end
