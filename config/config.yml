@@ -11,6 +11,10 @@ vagrant_synced_folders:
     destination: /var/www/fellaini
     type: nfs
     create: false
+  - local_path: ./sites/philjones
+    destination: /var/www/philjones
+    type: nfs
+    create: false
 vagrant_memory: 4096
 drupal_install_site: false
 drupal_build_composer_project: false
@@ -49,7 +53,7 @@ installed_extras:
   # - tideways
   # - upload-progress
   - varnish
-  - xdebug
+  #- xdebug
   # - xhprof # use `tideways` if you're installing PHP 7+
 firewall_allowed_tcp_ports:
   - "22"
@@ -68,7 +72,7 @@ firewall_allowed_tcp_ports:
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1, 7.2.
 # See version-specific notes: http://docs.drupalvm.com/en/latest/configurations/php/
-php_version: "7.1"
+php_version: "7.2"
 php_install_recommends: no
 php_memory_limit: "512M"
 php_display_errors: "On"
@@ -84,7 +88,7 @@ php_max_input_vars: "4000"
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
   - servername: "{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web/"
+    documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "adminer.{{ vagrant_hostname }}"
@@ -126,6 +130,10 @@ apache_vhosts:
     documentroot: "/var/www/rojo/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
+  - servername: "philjones.{{ vagrant_hostname }}"
+    documentroot: "/var/www/philjones/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
 # MySQL databases
 mysql_databases:
   - name: second
@@ -147,6 +155,9 @@ mysql_databases:
   - name: fellaini
     encoding: utf8
     collation: utf8_general_ci
+  - name: philjones
+    encoding: utf8
+    collation: utf8_general_ci
 mysql_users:
   - name: drupal
     host: "%"
@@ -154,11 +165,11 @@ mysql_users:
     priv: "*.*:ALL"
 
 # XDebug configuration. XDebug is disabled by default for better performance.
-php_xdebug_default_enable: 1
-php_xdebug_coverage_enable: 0
-php_xdebug_cli_disable: yes
-php_xdebug_remote_enable: 1
-php_xdebug_remote_connect_back: 1
-php_xdebug_idekey: sublime.xdebug
-php_xdebug_max_nesting_level: 256
-php_xdebug_remote_host: "{{ ansible_default_ipv4.gateway }}"
+#php_xdebug_default_enable: 1
+#php_xdebug_coverage_enable: 0
+#php_xdebug_cli_disable: yes
+#php_xdebug_remote_enable: 1
+#php_xdebug_remote_connect_back: 1
+#php_xdebug_idekey: sublime.xdebug
+#php_xdebug_max_nesting_level: 256
+#php_xdebug_remote_host: "{{ ansible_default_ipv4.gateway }}"

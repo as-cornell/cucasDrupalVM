@@ -5,3 +5,4 @@ vendor
 docroot
 sites
 .vagrant
+.DS_Store
