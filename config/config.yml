@@ -109,7 +109,14 @@ apache_vhosts:
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # multisite settings
 
-  - servername: "second.{{ vagrant_hostname }}"
+# department domain access settings
+  - servername: "departments.{{ vagrant_hostname }}"
+    documentroot: "/var/www/fellaini/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "anthro.{{ vagrant_hostname }}"
+    documentroot: "/var/www/fellaini/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "history.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -136,7 +143,7 @@ apache_vhosts:
 
 # MySQL databases
 mysql_databases:
-  - name: second
+  - name: departments
     encoding: utf8
     collation: utf8_general_ci
   - name: people
