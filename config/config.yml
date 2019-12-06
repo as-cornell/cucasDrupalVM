@@ -15,6 +15,10 @@ vagrant_synced_folders:
     destination: /var/www/philjones
     type: nfs
     create: false
+  - local_path: ./sites/scholsie
+    destination: /var/www/scholsie
+    type: nfs
+    create: false
 vagrant_memory: 4096
 drupal_install_site: false
 drupal_build_composer_project: false
@@ -141,6 +145,10 @@ apache_vhosts:
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
+  - servername: "scholsie.{{ vagrant_hostname }}"
+    documentroot: "/var/www/scholsie/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
 # MySQL databases
 mysql_databases:
   - name: departments
@@ -163,6 +171,9 @@ mysql_databases:
     encoding: utf8
     collation: utf8_general_ci
   - name: philjones
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: scholsie
     encoding: utf8
     collation: utf8_general_ci
 mysql_users:
