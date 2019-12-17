@@ -145,7 +145,10 @@ apache_vhosts:
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-  - servername: "scholsie.{{ vagrant_hostname }}"
+  - servername: "scholsie.as.{{ vagrant_hostname }}"
+    documentroot: "/var/www/scholsie/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "scholsie.dept.{{ vagrant_hostname }}"
     documentroot: "/var/www/scholsie/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -174,6 +177,9 @@ mysql_databases:
     encoding: utf8
     collation: utf8_general_ci
   - name: scholsie
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: scholsiedept
     encoding: utf8
     collation: utf8_general_ci
 mysql_users:
