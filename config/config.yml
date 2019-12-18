@@ -148,7 +148,10 @@ apache_vhosts:
   - servername: "scholsie.as.{{ vagrant_hostname }}"
     documentroot: "/var/www/scholsie/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "scholsie.dept.{{ vagrant_hostname }}"
+  - servername: "scholsie.dept1.{{ vagrant_hostname }}"
+    documentroot: "/var/www/scholsie/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "scholsie.dept2.{{ vagrant_hostname }}"
     documentroot: "/var/www/scholsie/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -179,7 +182,10 @@ mysql_databases:
   - name: scholsie
     encoding: utf8
     collation: utf8_general_ci
-  - name: scholsiedept
+  - name: scholsiedept1
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: scholsiedept2
     encoding: utf8
     collation: utf8_general_ci
 mysql_users:
