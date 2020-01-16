@@ -19,6 +19,10 @@ vagrant_synced_folders:
     destination: /var/www/scholsie
     type: nfs
     create: false
+  - local_path: ./sites/nani
+    destination: /var/www/nani
+    type: nfs
+    create: false
 vagrant_memory: 4096
 drupal_install_site: false
 drupal_build_composer_project: false
@@ -146,13 +150,17 @@ apache_vhosts:
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "scholsie.as.{{ vagrant_hostname }}"
-    documentroot: "/var/www/scholsie/web"
+    documentroot: "/var/www/scholsie/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "scholsie.dept1.{{ vagrant_hostname }}"
-    documentroot: "/var/www/scholsie/web"
+    documentroot: "/var/www/scholsie/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "scholsie.dept2.{{ vagrant_hostname }}"
-    documentroot: "/var/www/scholsie/web"
+    documentroot: "/var/www/scholsie/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "nani.{{ vagrant_hostname }}"
+    documentroot: "/var/www/nani/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 # MySQL databases
@@ -186,6 +194,9 @@ mysql_databases:
     encoding: utf8
     collation: utf8_general_ci
   - name: scholsiedept2
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: nani
     encoding: utf8
     collation: utf8_general_ci
 mysql_users:
