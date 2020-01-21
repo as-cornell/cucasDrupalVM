@@ -132,23 +132,15 @@ apache_vhosts:
     documentroot: "/var/www/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-# enable below for additional hostnames mapped to sites folders
-#  - servername: "8c.{{ vagrant_hostname }}"
-#    documentroot: "/var/www/fellaini/web"
-#    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
-#  - servername: "8d.{{ vagrant_hostname }}"
-#    documentroot: "/var/www/fellaini/web"
-#    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
+# rojo - devshop
   - servername: "rojo.{{ vagrant_hostname }}"
     documentroot: "/var/www/rojo/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
+# philjones - platform single site
   - servername: "philjones.{{ vagrant_hostname }}"
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
+# scholsie - acquia composer
   - servername: "scholsie.as.{{ vagrant_hostname }}"
     documentroot: "/var/www/scholsie/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -162,6 +154,8 @@ apache_vhosts:
   - servername: "nani.{{ vagrant_hostname }}"
     documentroot: "/var/www/nani/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+
 
 # MySQL databases
 mysql_databases:
