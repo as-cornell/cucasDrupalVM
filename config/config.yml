@@ -143,6 +143,10 @@ apache_vhosts:
   - servername: "philjones.{{ vagrant_hostname }}"
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "alexissanchez.{{ vagrant_hostname }}"
+    documentroot: "/var/www/philjones/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
 # scholsie - acquia composer
   - servername: "scholsie.as.{{ vagrant_hostname }}"
     documentroot: "/var/www/scholsie/docroot"
@@ -168,13 +172,6 @@ mysql_databases:
   - name: people
     encoding: utf8
     collation: utf8_general_ci
-# enable below to provision additional databases
-#  - name: drupal_c
-#    encoding: utf8
-#    collation: utf8_general_ci
-#  - name: drupal_d
-#    encoding: utf8
-#    collation: utf8_general_ci
   - name: rojo
     encoding: utf8
     collation: utf8_general_ci
@@ -182,6 +179,9 @@ mysql_databases:
     encoding: utf8
     collation: utf8_general_ci
   - name: philjones
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: alexissanchez
     encoding: utf8
     collation: utf8_general_ci
   - name: scholsie
