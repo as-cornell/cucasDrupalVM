@@ -63,6 +63,9 @@ installed_extras:
   - varnish
   #- xdebug
   # - xhprof # use `tideways` if you're installing PHP 7+
+extra_packages:
+  - sqlite
+  - php7.2-zip
 firewall_allowed_tcp_ports:
   - "22"
   - "25"
@@ -82,7 +85,7 @@ firewall_allowed_tcp_ports:
 # See version-specific notes: http://docs.drupalvm.com/en/latest/configurations/php/
 php_version: "7.2"
 php_install_recommends: no
-php_memory_limit: "512M"
+php_memory_limit: "1024M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
 php_realpath_cache_size: "1024K"
@@ -198,6 +201,10 @@ mysql_users:
     host: "%"
     password: drupal
     priv: "*.*:ALL"
+mysql_innodb_buffer_pool_size: "1G"
+mysql_innodb_log_file_size: "64M"
+mysql_innodb_log_buffer_size: "64M"
+mysql_innodb_flush_log_at_trx_commit: "2"
 
 # XDebug configuration. XDebug is disabled by default for better performance.
 #php_xdebug_default_enable: 1
