@@ -23,6 +23,10 @@ vagrant_synced_folders:
     destination: /var/www/nani
     type: nfs
     create: false
+  - local_path: ./sites/pogba
+    destination: /var/www/pogba
+    type: nfs
+    create: false
 vagrant_memory: 4096
 drupal_install_site: false
 drupal_build_composer_project: false
@@ -160,6 +164,14 @@ apache_vhosts:
 
   - servername: "nani.{{ vagrant_hostname }}"
     documentroot: "/var/www/nani/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+# pogba - drupal 7 and 8 platform build
+  - servername: "butty.{{ vagrant_hostname }}"
+    documentroot: "/var/www/pogba/drupal8/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "cantona.{{ vagrant_hostname }}"
+    documentroot: "/var/www/pogba/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 
