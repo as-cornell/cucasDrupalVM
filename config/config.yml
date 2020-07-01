@@ -168,10 +168,10 @@ apache_vhosts:
 
 # pogba - drupal 7 and 8 platform build
   - servername: "butty.{{ vagrant_hostname }}"
-    documentroot: "/var/www/pogba/drupal8/web"
+    documentroot: "/var/www/pogba/fellaini/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "cantona.{{ vagrant_hostname }}"
-    documentroot: "/var/www/pogba/drupal7/docroot"
+    documentroot: "/var/www/pogba/scholsie/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 
