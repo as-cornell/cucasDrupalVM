@@ -3,10 +3,6 @@ vagrant_synced_folders:
   # The first synced folder will be used for the default Drupal installation, if
   # any of the build_* settings are 'true'. By default the folder is set to
   # the drupal-vm folder.
-  - local_path: ./sites/rojo
-    destination: /var/www/rojo
-    type: nfs
-    create: false
   - local_path: ./sites/fellaini
     destination: /var/www/fellaini
     type: nfs
@@ -15,16 +11,8 @@ vagrant_synced_folders:
     destination: /var/www/philjones
     type: nfs
     create: false
-  - local_path: ./sites/scholsie
-    destination: /var/www/scholsie
-    type: nfs
-    create: false
   - local_path: ./sites/nani
     destination: /var/www/nani
-    type: nfs
-    create: false
-  - local_path: ./sites/pogba
-    destination: /var/www/pogba
     type: nfs
     create: false
 vagrant_memory: 4096
@@ -103,7 +91,7 @@ php_max_input_vars: "4000"
 # View the geerlingguy.apache Ansible Role README for more options.
 apache_vhosts:
   - servername: "{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
+    documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
   - servername: "adminer.{{ vagrant_hostname }}"
@@ -123,27 +111,31 @@ apache_vhosts:
     documentroot: "{{ dashboard_install_dir }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # multisite settings
-
 # department domain access settings
   - servername: "departments.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
+    documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "anthro.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
+    documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "history.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
+    documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
   - servername: "people.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/web"
+    documentroot: "/var/www/fellaini/drupal8/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+# scholsie - drupal7 composer
+  - servername: "scholsie.{{ vagrant_hostname }}"
+    documentroot: "/var/www/fellaini/drupal7/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "dept1.scholsie.{{ vagrant_hostname }}"
+    documentroot: "/var/www/fellaini/drupal7/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "dept2.scholsie.{{ vagrant_hostname }}"
+    documentroot: "/var/www/fellaini/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-# rojo - devshop
-  - servername: "rojo.{{ vagrant_hostname }}"
-    documentroot: "/var/www/rojo/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-# philjones - platform single site
+# philjones - platform multi site
   - servername: "philjones.{{ vagrant_hostname }}"
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -151,28 +143,12 @@ apache_vhosts:
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-# scholsie - acquia composer
-  - servername: "scholsie.as.{{ vagrant_hostname }}"
-    documentroot: "/var/www/scholsie/docroot"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "scholsie.dept1.{{ vagrant_hostname }}"
-    documentroot: "/var/www/scholsie/docroot"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "scholsie.dept2.{{ vagrant_hostname }}"
-    documentroot: "/var/www/scholsie/docroot"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
+# philjones - cpanel multi site composer based
   - servername: "nani.{{ vagrant_hostname }}"
     documentroot: "/var/www/nani/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-# pogba - drupal 7 and 8 platform build
-  - servername: "butty.{{ vagrant_hostname }}"
-    documentroot: "/var/www/pogba/app/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "cantona.{{ vagrant_hostname }}"
-    documentroot: "/var/www/pogba/scholsie/docroot"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
 
 
 
