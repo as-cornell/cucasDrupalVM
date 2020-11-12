@@ -15,6 +15,10 @@ vagrant_synced_folders:
     destination: /var/www/nani
     type: nfs
     create: false
+  - local_path: ./sites/el-hincho
+    destination: /var/www/el-hincho
+    type: nfs
+    create: false
 vagrant_memory: 4096
 drupal_install_site: false
 drupal_build_composer_project: false
@@ -58,6 +62,7 @@ installed_extras:
 extra_packages:
   - sqlite
   - php7.2-zip
+  - php7.2-ldap
 firewall_allowed_tcp_ports:
   - "22"
   - "25"
@@ -121,17 +126,18 @@ apache_vhosts:
   - servername: "history.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+# people
   - servername: "people.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # scholsie - drupal7 composer
-  - servername: "scholsie.{{ vagrant_hostname }}"
+  - servername: "d7.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "dept1.scholsie.{{ vagrant_hostname }}"
+  - servername: "dept1.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "dept2.scholsie.{{ vagrant_hostname }}"
+  - servername: "dept2.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
@@ -143,9 +149,27 @@ apache_vhosts:
     documentroot: "/var/www/philjones/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
-# philjones - cpanel multi site composer based
+# nani - cpanel multi site composer based
   - servername: "nani.{{ vagrant_hostname }}"
     documentroot: "/var/www/nani/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+# el-hincho - platform d8+d7 multi site composer based
+  - servername: "el-hincho8.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal8/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "el-hincho7.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal7/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+# el-hincho d7 multisite
+  - servername: "aircooled.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal7/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "eheart.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal7/docroot"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "figueroa.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 
@@ -160,9 +184,6 @@ mysql_databases:
   - name: people
     encoding: utf8
     collation: utf8_general_ci
-  - name: rojo
-    encoding: utf8
-    collation: utf8_general_ci
   - name: fellaini
     encoding: utf8
     collation: utf8_general_ci
@@ -175,13 +196,13 @@ mysql_databases:
   - name: scholsie
     encoding: utf8
     collation: utf8_general_ci
-  - name: scholsiedept1
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: scholsiedept2
-    encoding: utf8
-    collation: utf8_general_ci
   - name: nani
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: hincho8
+    encoding: utf8
+    collation: utf8_general_ci
+  - name: hincho7
     encoding: utf8
     collation: utf8_general_ci
 mysql_users:
