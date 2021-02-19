@@ -152,15 +152,21 @@ apache_vhosts:
 
 # nani - cpanel multi site composer based
   - servername: "nani.{{ vagrant_hostname }}"
-    documentroot: "/var/www/nani/web"
+    documentroot: "/var/www/nani/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 
 # el-hincho - platform d8+d7 multi site composer based
-  - servername: "el-hincho8.{{ vagrant_hostname }}"
+  - servername: "el-hincho.{{ vagrant_hostname }}"
     documentroot: "/var/www/el-hincho/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "el-hincho7.{{ vagrant_hostname }}"
-    documentroot: "/var/www/el-hincho/drupal7/docroot"
+  - servername: "aircooled8.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal8/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "figueroa8.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal8/web"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+  - servername: "svloba.{{ vagrant_hostname }}"
+    documentroot: "/var/www/el-hincho/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # el-hincho d7 multisite
   - servername: "aircooled.{{ vagrant_hostname }}"
