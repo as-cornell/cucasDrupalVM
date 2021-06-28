@@ -7,10 +7,6 @@ vagrant_synced_folders:
     destination: /var/www/fellaini
     type: nfs
     create: false
-  - local_path: ./sites/philjones
-    destination: /var/www/philjones
-    type: nfs
-    create: false
   - local_path: ./sites/nani
     destination: /var/www/nani
     type: nfs
@@ -61,8 +57,8 @@ installed_extras:
   # - xhprof # use `tideways` if you're installing PHP 7+
 extra_packages:
   - sqlite
-  - php7.2-zip
-  - php7.2-ldap
+  - php7.4-zip
+  - php7.4-ldap
 firewall_allowed_tcp_ports:
   - "22"
   - "25"
@@ -80,7 +76,7 @@ firewall_allowed_tcp_ports:
 
 # PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1, 7.2.
 # See version-specific notes: http://docs.drupalvm.com/en/latest/configurations/php/
-php_version: "7.2"
+php_version: "7.4"
 php_install_recommends: no
 php_memory_limit: "1024M"
 php_post_max_size: "100M"
@@ -117,21 +113,11 @@ apache_vhosts:
     documentroot: "{{ dashboard_install_dir }}"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # multisite settings
-# department domain access settings
-  - servername: "departments.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/drupal8/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "anthro.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/drupal8/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "history.{{ vagrant_hostname }}"
-    documentroot: "/var/www/fellaini/drupal8/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
 # people
   - servername: "people.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal8/web"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-# scholsie - drupal7 composer
+# drupal7 composer
   - servername: "d7.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -141,15 +127,6 @@ apache_vhosts:
   - servername: "dept2.{{ vagrant_hostname }}"
     documentroot: "/var/www/fellaini/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
-# philjones - platform multi site
-  - servername: "philjones.{{ vagrant_hostname }}"
-    documentroot: "/var/www/philjones/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "alexissanchez.{{ vagrant_hostname }}"
-    documentroot: "/var/www/philjones/web"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-
 # nani - cpanel multi site composer based
   - servername: "nani.{{ vagrant_hostname }}"
     documentroot: "/var/www/nani/docroot"
@@ -172,9 +149,6 @@ apache_vhosts:
   - servername: "aircooled.{{ vagrant_hostname }}"
     documentroot: "/var/www/el-hincho/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
-  - servername: "eheart.{{ vagrant_hostname }}"
-    documentroot: "/var/www/el-hincho/drupal7/docroot"
-    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
   - servername: "figueroa.{{ vagrant_hostname }}"
     documentroot: "/var/www/el-hincho/drupal7/docroot"
     extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
@@ -185,22 +159,13 @@ apache_vhosts:
 
 # MySQL databases
 mysql_databases:
-  - name: departments
+  - name: fellaini
     encoding: utf8
     collation: utf8_general_ci
   - name: people
     encoding: utf8
     collation: utf8_general_ci
-  - name: fellaini
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: philjones
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: alexissanchez
-    encoding: utf8
-    collation: utf8_general_ci
-  - name: scholsie
+  - name: drupal7
     encoding: utf8
     collation: utf8_general_ci
   - name: nani
